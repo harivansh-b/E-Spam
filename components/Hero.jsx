@@ -1,7 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import espamImage from '../public/espam.jpeg';
+import espamImage from '../public/espam.jpg';
 
 // MOVE WORDS OUTSIDE
 const words = ['Detect Spam', 'Filter Spam', 'Classify Spam', 'Protect Spam', 'Secure Spam'];
