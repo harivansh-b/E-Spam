@@ -94,10 +94,13 @@ export default function FileUpload({ message, setMessage }) {
             <div className="w-full max-w-lg">
                 <label
                     htmlFor="dropzone-file"
-                    className={`flex flex-col justify-center items-center w-full min-h-[16rem] border-2 rounded-xl transition
-                        ${hasUploaded ? 'bg-gray-100 cursor-not-allowed border-gray-200' :
-                            isDragOver ? 'bg-gray-200 border-dashed' :
-                                'bg-gray-50 border-dashed cursor-pointer hover:bg-gray-100'}`}
+                    className={`flex flex-col justify-center items-center w-full min-h-[16rem] border-2 rounded-xl transition-all duration-300 ${
+                        hasUploaded 
+                            ? 'bg-tertiary-700 cursor-not-allowed border-tertiary-400' 
+                            : isDragOver 
+                                ? 'bg-primary-800 border-primary-500 border-solid shadow-lg' 
+                                : 'bg-tertiary-800 border-primary-400 border-dashed cursor-pointer hover:bg-tertiary-700 hover:border-primary-500 hover:shadow-md'
+                    }`}
                     onClick={(e) => hasUploaded && e.preventDefault()}
                     onDragOver={(e) => { e.preventDefault(); if (!hasUploaded) setIsDragOver(true); }}
                     onDragLeave={(e) => { e.preventDefault(); if (!hasUploaded) setIsDragOver(false); }}
@@ -117,36 +120,45 @@ export default function FileUpload({ message, setMessage }) {
                             <Skeleton width={100} height={12} />
                         </div>
                     ) : uploadedFile ? (
-                        <div className="flex items-center justify-between w-full bg-white rounded-lg px-4 py-3 shadow">
+                        <div className="flex items-center justify-between w-full bg-white rounded-lg px-4 py-3 shadow-md border border-primary-300/20">
                             <div className="flex items-center gap-3">
-                                <div className="w-10 h-10 flex items-center justify-center border rounded-lg">
+                                <div className="w-10 h-10 flex items-center justify-center border border-primary-300 rounded-lg bg-primary-900/50">
                                     <Image src={getIcon()} alt="icon" width={24} height={24} />
                                 </div>
                                 <div>
-                                    <p className="text-sm font-medium text-gray-800 truncate max-w-[10rem]">
+                                    <p className="text-sm font-medium text-primary-200 truncate max-w-[10rem]">
                                         {uploadedFile.name}
                                     </p>
-                                    <p className="text-xs text-gray-600">
+                                    <p className="text-xs text-primary-300">
                                         {(uploadedFile.size / (1024 * 1024)).toFixed(2)} MB
                                     </p>
                                 </div>
                             </div>
-                            <button onClick={removeFile}>
-                                <TrashIcon className="w-5 h-5 text-red-500" />
+                            <button 
+                                onClick={removeFile}
+                                className="p-1 rounded-full hover:bg-secondary-800 transition-colors duration-200"
+                            >
+                                <TrashIcon className="w-5 h-5 text-secondary-500 hover:text-secondary-400" />
                             </button>
                         </div>
                     ) : (
                         <div className="flex flex-col items-center space-y-2">
-                            <svg className="w-10 h-10 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                                    d="M12 4v12m0 0l-3.5-3.5M12 16l3.5-3.5M20.25 16.5A3.75 3.75 0 0016.5 12.75H7.5a3.75 3.75 0 00-3.75 3.75v.75A3.75 3.75 0 007.5 21h9a3.75 3.75 0 003.75-3.75v-.75z"
-                                />
-                            </svg>
-                            <p className="text-sm text-gray-600 font-medium">Click to upload or drag and drop</p>
-                            <p className="text-xs text-gray-500">PDF or EML only (max 32MB)</p>
+                            <div className="w-12 h-12 rounded-full bg-primary-500/20 flex items-center justify-center">
+                                <svg className="w-6 h-6 text-primary-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                                        d="M12 4v12m0 0l-3.5-3.5M12 16l3.5-3.5M20.25 16.5A3.75 3.75 0 0016.5 12.75H7.5a3.75 3.75 0 00-3.75 3.75v.75A3.75 3.75 0 007.5 21h9a3.75 3.75 0 003.75-3.75v-.75z"
+                                    />
+                                </svg>
+                            </div>
+                            <p className="text-sm text-primary-300 font-medium">Click to upload or drag and drop</p>
+                            <p className="text-xs text-primary-400">PDF or EML only (max 32MB)</p>
                         </div>
                     )}
-                    {error && <p className="text-sm text-red-600 mt-2">{error}</p>}
+                    {error && (
+                        <div className="mt-3 px-3 py-2 bg-secondary-900/80 border border-secondary-600 rounded-lg">
+                            <p className="text-sm text-secondary-400 font-medium">{error}</p>
+                        </div>
+                    )}
                     <input
                         id="dropzone-file"
                         type="file"

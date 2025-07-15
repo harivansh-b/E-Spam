@@ -6,65 +6,65 @@
     --font-nova-sans: 'Nova Sans', sans-serif;
     --font-sans: 'Nova Sans', sans-serif;
 
-    /* Melon shades */
-    --color-melon-default: #ffb5a7;
-    --color-melon-100: #550e00;
-    --color-melon-200: #a91c00;
-    --color-melon-300: #fe2a00;
-    --color-melon-400: #ff7054;
-    --color-melon-500: #ffb5a7;
-    --color-melon-600: #ffc5ba;
-    --color-melon-700: #ffd4cb;
-    --color-melon-800: #ffe2dc;
-    --color-melon-900: #fff1ee;
+/* Custom Primary Colors */
+    --color-primary-default: #79dcdc;
+    --color-primary-100: #0a2e2e;
+    --color-primary-200: #145c5c;
+    --color-primary-300: #1e8a8a;
+    --color-primary-400: #4bb3b3;
+    --color-primary-500: #79dcdc;
+    --color-primary-600: #94e3e3;
+    --color-primary-700: #afebeb;
+    --color-primary-800: #caf2f2;
+    --color-primary-900: #e4f9f9;
 
-    /* Pale Dogwood shades */
-    --color-pale-dogwood-default: #fcd5ce;
-    --color-pale-dogwood-100: #561206;
-    --color-pale-dogwood-200: #ad230b;
-    --color-pale-dogwood-300: #f14122;
-    --color-pale-dogwood-400: #f68c79;
-    --color-pale-dogwood-500: #fcd5ce;
-    --color-pale-dogwood-600: #fdded9;
-    --color-pale-dogwood-700: #fde6e2;
-    --color-pale-dogwood-800: #feefec;
-    --color-pale-dogwood-900: #fef7f5;
+    /* Custom Secondary Colors */
+    --color-secondary-default: #ff8a9d;
+    --color-secondary-100: #4d1421;
+    --color-secondary-200: #9a2843;
+    --color-secondary-300: #e63c64;
+    --color-secondary-400: #ff6383;
+    --color-secondary-500: #ff8a9d;
+    --color-secondary-600: #ff9fb1;
+    --color-secondary-700: #ffb4c5;
+    --color-secondary-800: #ffc9d8;
+    --color-secondary-900: #ffdeec;
 
-    /* Seashell shades */
-    --color-seashell-default: #f8edeb;
-    --color-seashell-100: #482019;
-    --color-seashell-200: #8f4032;
-    --color-seashell-300: #c66d5d;
-    --color-seashell-400: #dfada4;
-    --color-seashell-500: #f8edeb;
-    --color-seashell-600: #faf1f0;
-    --color-seashell-700: #fbf5f4;
-    --color-seashell-800: #fcf8f7;
-    --color-seashell-900: #fefcfb;
+    /* Custom Tertiary Colors */
+    --color-tertiary-default: #fff0f0;
+    --color-tertiary-100: #4d3333;
+    --color-tertiary-200: #9a6666;
+    --color-tertiary-300: #cc9999;
+    --color-tertiary-400: #e6cccc;
+    --color-tertiary-500: #fff0f0;
+    --color-tertiary-600: #fff3f3;
+    --color-tertiary-700: #fff6f6;
+    --color-tertiary-800: #fff9f9;
+    --color-tertiary-900: #fffcfc;
 
-    /* Champagne Pink shades */
-    --color-champagne-pink-default: #f9dcc4;
-    --color-champagne-pink-100: #512908;
-    --color-champagne-pink-200: #a25110;
-    --color-champagne-pink-300: #e97b21;
-    --color-champagne-pink-400: #f1ab72;
-    --color-champagne-pink-500: #f9dcc4;
-    --color-champagne-pink-600: #fae2cf;
-    --color-champagne-pink-700: #fbe9db;
-    --color-champagne-pink-800: #fdf1e7;
-    --color-champagne-pink-900: #fef8f3;
+    /* Custom Quaternary Colors */
+    --color-quaternary-default: #ffdbdb;
+    --color-quaternary-100: #4d2929;
+    --color-quaternary-200: #9a5252;
+    --color-quaternary-300: #e67b7b;
+    --color-quaternary-400: #ffabab;
+    --color-quaternary-500: #ffdbdb;
+    --color-quaternary-600: #ffe2e2;
+    --color-quaternary-700: #ffe9e9;
+    --color-quaternary-800: #fff0f0;
+    --color-quaternary-900: #fff7f7;
 
-    /* Peach shades */
-    --color-peach-default: #fec89a;
-    --color-peach-100: #512601;
-    --color-peach-200: #a24c02;
-    --color-peach-300: #f27202;
-    --color-peach-400: #fd9d49;
-    --color-peach-500: #fec89a;
-    --color-peach-600: #fed4ae;
-    --color-peach-700: #fedec2;
-    --color-peach-800: #ffe9d7;
-    --color-peach-900: #fff4eb;
+    /* Custom Quinary Colors */
+    --color-quinary-default: #ff9eb3;
+    --color-quinary-100: #4d1a26;
+    --color-quinary-200: #9a334c;
+    --color-quinary-300: #e64d72;
+    --color-quinary-400: #ff759a;
+    --color-quinary-500: #ff9eb3;
+    --color-quinary-600: #ffb1c2;
+    --color-quinary-700: #ffc4d1;
+    --color-quinary-800: #ffd7e0;
+    --color-quinary-900: #ffebef;
 
 }
 

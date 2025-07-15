@@ -6,20 +6,26 @@ import React from "react";
 
 export default function InputArea({ message, setMessage }) {
     return (
-        <div className="grid w-full gap-3 px-4 max-w-lg mx-auto font-sans">
+        <div className="grid w-full gap-4 px-4 max-w-lg mx-auto font-sans">
             <Label
                 htmlFor="message"
-                className="text-base font-semibold text-pale-dogwood-300"
+                className="text-base font-semibold text-primary-200 flex items-center gap-2"
             >
+                <div className="w-1 h-5 bg-primary-500 rounded-full"></div>
                 Your message
             </Label>
-            <Textarea
-                id="message"
-                placeholder="Type your message here."
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-                className="min-h-[10rem] rounded-xl border border-pale-dogwood-400 bg-seashell-500 placeholder-gray-400 focus:border-pale-dogwood-300 focus:ring-2 focus:ring-pale-dogwood-300 transition"
-            />
+            <div className="relative">
+                <Textarea
+                    id="message"
+                    placeholder="Type your message here..."
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                    className="min-h-[10rem] rounded-xl border-2 border-primary-400/60 bg-tertiary-800 placeholder-primary-400/70 text-primary-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/30 focus:bg-tertiary-700 transition-all duration-300 resize-none shadow-sm hover:border-primary-500/80 hover:shadow-md"
+                />
+                <div className="absolute bottom-3 right-3 text-xs text-primary-400/60 pointer-events-none">
+                    {message.length} characters
+                </div>
+            </div>
         </div>
     );
 }

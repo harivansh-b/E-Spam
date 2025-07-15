@@ -1,8 +1,13 @@
+import HowToInput from '../../../components/HowToInput'
+import Hero from '../../../components/Hero'
 import React from 'react'
 
 const page = () => {
   return (
-    <div>page</div>
+    <div>
+      <Hero />
+      <HowToInput/>
+    </div>
   )
 }
 

@@ -44,40 +44,66 @@ export default function Predict({ message }) {
         predict();
     }, [message]);
 
+    const getResultColor = () => {
+        if (result === "Spam") return "text-secondary-400";
+        if (result === "Not spam") return "text-primary-400";
+        return "text-quaternary-400";
+    };
+
+    const getResultBg = () => {
+        if (result === "Spam") return "bg-secondary-900/30 border-secondary-600/50";
+        if (result === "Not spam") return "bg-primary-900/30 border-primary-600/50";
+        return "bg-quaternary-900/30 border-quaternary-600/50";
+    };
+
     return (
         <div className="flex flex-col items-center justify-center py-6 font-sans">
-            <Card className="w-full max-w-md rounded-2xl shadow-lg border bg-[--color-seashell-500]">
-                <CardContent className="flex flex-col space-y-5 p-6">
-                    <h2 className="text-center text-2xl font-semibold text-melon-400">
-                        Prediction Result
-                    </h2>
-                    {loading ? (
-                        <p className="text-center text-[--color-melon-300] font-medium">
-                            Predicting...
-                        </p>
-                    ) : result ? (
-                        <p
-                            className={`text-center text-lg font-bold ${
-                                result === "Spam"
-                                    ? "text-red-600"
-                                    : result === "Not spam"
-                                    ? "text-green-600"
-                                    : "text-gray-600"
-                            }`}
-                        >
-                            {result}
-                        </p>
-                    ) : (
-                        <p className="text-center text-gray-500">
-                            Enter or upload an email to predict.
-                        </p>
-                    )}
+            <Card className="w-full max-w-md rounded-2xl shadow-lg border-2 border-primary-400/30 bg-tertiary-800 backdrop-blur-sm">
+                <CardContent className="flex flex-col space-y-6 p-6">
+                    <div className="text-center">
+                        <div className="inline-flex items-center gap-2 mb-2">
+                            <div className="w-2 h-2 bg-primary-500 rounded-full"></div>
+                            <h2 className="text-2xl font-bold text-primary-200">
+                                Prediction Result
+                            </h2>
+                            <div className="w-2 h-2 bg-primary-500 rounded-full"></div>
+                        </div>
+                    </div>
+                    
+                    <div className="min-h-[4rem] flex items-center justify-center">
+                        {loading ? (
+                            <div className="flex items-center gap-3">
+                                <div className="w-5 h-5 border-2 border-primary-400 border-t-transparent rounded-full animate-spin"></div>
+                                <p className="text-primary-300 font-medium">
+                                    Analyzing...
+                                </p>
+                            </div>
+                        ) : result ? (
+                            <div className={`px-4 py-2 rounded-lg border-2 ${getResultBg()}`}>
+                                <p className={`text-lg font-bold ${getResultColor()}`}>
+                                    {result}
+                                </p>
+                            </div>
+                        ) : (
+                            <p className="text-center text-primary-400/70 italic">
+                                Enter or upload an email to predict.
+                            </p>
+                        )}
+                    </div>
+                    
                     <Button
                         onClick={predict}
                         disabled={loading || !message.trim()}
-                        className="bg-melon-400 hover:bg-melon-300 text-white rounded-xl transition"
+                        className="bg-gradient-to-r from-primary-500 to-primary-400 hover:from-primary-400 hover:to-primary-300 disabled:from-primary-600 disabled:to-primary-600 disabled:opacity-50 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 disabled:hover:scale-100 shadow-md hover:shadow-lg"
                     >
-                        {loading ? "Predicting..." : "Predict Again"}
+                        {loading ? (
+                            <div className="flex items-center gap-2">
+                                <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                                Analyzing...
+                            </div>
+                        ) : (
+                            "Predict Again"
+                        )}
                     </Button>
                 </CardContent>
             </Card>

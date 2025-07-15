@@ -6,7 +6,7 @@ from werkzeug.utils import secure_filename
 from .utils import extract_email_body
 from .config import Config
 
-bp = Blueprint('bp', __name__ , url_prefix='/api')
+bp = Blueprint('bp', __name__, url_prefix='/api')
 
 # Paths for your pickle files
 base_path = os.path.dirname(__file__)
@@ -20,9 +20,10 @@ with open(vectorizer_path, 'rb') as f:
 with open(model_path, 'rb') as f:
     model = pickle.load(f)
 
-@bp.route('/upload' , methods = ['POST'])
+@bp.route('/upload', methods=['POST'])
 def upload_email():
     try:
+        # Check if file is present in request
         if 'file' not in request.files:
             return jsonify({"error": "No file part in the request"}), 400
 
@@ -30,29 +31,49 @@ def upload_email():
         if file.filename == '':
             return jsonify({"error": "No file selected"}), 400
 
+        # Secure the filename and check extension
         filename = secure_filename(file.filename)
         file_ext = os.path.splitext(filename)[1].lower()
 
         if file_ext not in ['.pdf', '.eml']:
             return jsonify({"error": "Unsupported file type. Please upload a PDF or EML file."}), 400
 
-        # Generate UUID filename
+        # Ensure upload folder exists
+        if not os.path.exists(Config.UPLOAD_FOLDER):
+            os.makedirs(Config.UPLOAD_FOLDER)
+
+        # Generate UUID filename to avoid conflicts
         unique_filename = f"{uuid.uuid4()}{file_ext}"
         save_path = os.path.join(Config.UPLOAD_FOLDER, unique_filename)
+        
+        # Save the file temporarily
         file.save(save_path)
 
-        # Extract text
+        # Extract text from the saved file
         extracted_text = extract_email_body(save_path)
+        
+        # Clean up - delete the temporary file
+        if os.path.exists(save_path):
+            os.remove(save_path)
+        
+        # Check if extraction was successful
         if not extracted_text or extracted_text.strip() == "":
             return jsonify({"error": "Could not extract text from the file."}), 400
 
+        # Return the extracted message
         return jsonify({
-            "message" : extracted_text
+            "message": extracted_text,
+            "status": "success"
         })
 
     except Exception as e:
+        # Clean up file in case of error
+        if 'save_path' in locals() and os.path.exists(save_path):
+            os.remove(save_path)
+        
         return jsonify({"error": str(e)}), 500
-    
+
+
 @bp.route('/predict', methods=['POST'])
 def predict_spam():
     try:
