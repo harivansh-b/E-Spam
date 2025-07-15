@@ -55,14 +55,14 @@ A full-stack web application that uses machine learning to detect spam messages 
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/E-Mail-spam-detection.git
-   cd E-Mail-spam-detection
+   git clone https://github.com/harivansh-b/E-Spam.git
+   cd E-Spmm
    ```
 
 2. **Set up the machine learning model**
    ```bash
    # Install Python dependencies
-   pip install pandas scikit-learn flask flask-cors pickle5
+   pip install pandas scikit-learn flask flask-cors pickle5 PyPDF2
    
    # Run the Jupyter notebook to train the model (optional - pre-trained models included)
    jupyter notebook model.ipynb
@@ -83,8 +83,9 @@ A full-stack web application that uses machine learning to detect spam messages 
    ```
 
 5. **Access the application**
-   - Frontend: http://localhost:3000 (or https://e-spam.vercel.app/ for live demo)
+   - Frontend: http://localhost:3000 
    - Backend API: http://localhost:5000
+   - Live : https://e-spam.vercel.app/
 
 ## 📁 Project Structure
 
