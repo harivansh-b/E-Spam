@@ -103,11 +103,6 @@ e-spam/
 │  └─ layout.js
 ├─ backend/
 │  ├─ app/
-│  │  ├─ __pycache__/
-│  │  │  ├─ __init__.cpython-313.pyc
-│  │  │  ├─ config.cpython-313.pyc
-│  │  │  ├─ predict_route.cpython-313.pyc
-│  │  │  └─ utils.cpython-313.pyc
 │  │  ├─ models/
 │  │  │  ├─ count_vectorizer.pkl
 │  │  │  ├─ model.ipynb

@@ -22,14 +22,13 @@ export default function Header() {
                             alt="Logo"
                         />
                     </div>
-                </div>
-
-                {/* Center: App Name (absolute center) */}
-                <div className="absolute left-1/2 transform -translate-x-1/2">
                     <span className="font-bold text-2xl tracking-wide text-white drop-shadow-md">
                         E-Spam
                     </span>
                 </div>
+
+                {/* Center: App Name (absolute center) */}
+                
 
                 {/* Right: Navigation Links */}
                 <div className="flex gap-6">
